@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Mono:wght@300;400&display=swap');
+
+/* ── Base ── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  background: #0e0d0b;
+  border-bottom: 1px solid #2a2620;
+
+  /* subtle noise layer */
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 119px,
+      #1a1714 119px,
+      #1a1714 120px
+    );
+}
+
+/* thin gold rule that runs the full width underneath */
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 2rem;
+  right: 2rem;
+  height: 1px;
+  background: linear-gradient(90deg, #c9a84c, #b84c2b 60%, transparent);
+  opacity: 0.5;
+}
+
+/* ── Brand ── */
+.navbar__brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #f5f0e8;
+  letter-spacing: 0.04em;
+  position: relative;
+  cursor: default;
+  white-space: nowrap;
+}
+
+/* italic gold accent on hover */
+.navbar__brand::after {
+  content: '✦';
+  font-style: italic;
+  font-size: 0.6rem;
+  color: #c9a84c;
+  margin-left: 0.4rem;
+  opacity: 0;
+  transform: translateY(2px);
+  display: inline-block;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.navbar__brand:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Links ── */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.navbar__links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #6b6560;
+  padding: 0.4rem 0.85rem;
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* underline wipe */
+.navbar__links a::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 1px;
+  background: linear-gradient(90deg, #c9a84c, #b84c2b);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.navbar__links a:hover {
+  color: #f5f0e8;
+}
+.navbar__links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* active route — brighter + line always visible */
+.navbar__links a.active {
+  color: #c9a84c;
+}
+.navbar__links a.active::after {
+  transform: scaleX(1);
+  background: #c9a84c;
+}
+
+/* ── Mobile ── */
+@media (max-width: 540px) {
+  .navbar {
+    padding: 0 1rem;
+    flex-wrap: wrap;
+    height: auto;
+    gap: 0.5rem;
+    padding-block: 0.75rem;
+  }
+
+  .navbar__links {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid #2a2620;
+    padding-top: 0.5rem;
+  }
+
+  .navbar__links a {
+    padding: 0.3rem 0.4rem;
+    font-size: 0.6rem;
+  }
+}

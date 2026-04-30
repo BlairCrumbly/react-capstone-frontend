@@ -1,0 +1,67 @@
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.card-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.25s, border-color 0.25s;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* fill sweep on hover */
+.card-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-101%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.card-btn:hover {
+  color: var(--ink);
+  border-color: var(--gold);
+}
+.card-btn:hover::before {
+  transform: translateX(0);
+}
+
+.card-btn-text,
+.card-btn-icon {
+  position: relative;
+  z-index: 1;
+}
+
+.card-btn-icon {
+  font-size: 1rem;
+  font-family: 'Playfair Display', serif;
+  line-height: 1;
+  transition: transform 0.2s;
+}
+.card-btn:hover .card-btn-icon {
+  transform: rotate(90deg);
+}
+
+/* active press */
+.card-btn:active {
+  transform: scale(0.98);
+}
