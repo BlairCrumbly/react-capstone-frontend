@@ -3,7 +3,11 @@ import type { MenuItem } from '../types/Menu'
 import { MenuItemCard } from './MenuItemCard'
 import '../style/MenuItemList.css'
 
-export function MenuItemList() {
+type MenuItemListProps = {
+  onAddToCart: (item: MenuItem) => void
+}
+
+export function MenuItemList({ onAddToCart }: MenuItemListProps) {
   const [items, setItems] = useState<MenuItem[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -14,7 +18,7 @@ export function MenuItemList() {
         setLoading(true)
         setError(null)
 
-        const resp = await fetch('/api/menuitems') // proxied to 8080
+        const resp = await fetch('/api/menuitems')
         if (!resp.ok) throw new Error(`HTTP ${resp.status}`)
 
         const data: MenuItem[] = await resp.json()
@@ -34,15 +38,15 @@ export function MenuItemList() {
   if (error) return <div>Error: {error}</div>
   if (items.length === 0) return <div>No menu items available.</div>
 
-  const handleAddToCart = (item: MenuItem) => {
-    console.log('Add to cart:', item)
-  }
-
-return (
-  <div className="menu-list">
-    {items.map((item) => (
-      <MenuItemCard key={item.id} menuItem={item} />
-    ))}
-  </div>
-)
+  return (
+    <div className="menu-list">
+      {items.map((item) => (
+        <MenuItemCard
+          key={item.id}
+          menuItem={item}
+          onAddToCart={onAddToCart}
+        />
+      ))}
+    </div>
+  )
 }
