@@ -1,0 +1,210 @@
+/* ── Layout ── */
+.checkout {
+  max-width: 680px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  font-family: 'DM Mono', monospace;
+  color: #f5f0e8;
+}
+
+.checkout__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #f5f0e8;
+  margin-bottom: 2.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.checkout__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 3rem;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #b84c2b);
+}
+
+/* ── Empty state ── */
+.checkout--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+}
+
+.checkout__empty-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #6b6560;
+  text-transform: uppercase;
+}
+
+/* ── Item list ── */
+.checkout__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #2a2620;
+}
+
+.checkout__item {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #2a2620;
+  animation: itemReveal 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes itemReveal {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.checkout__item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+  gap: 1rem;
+}
+
+.checkout__item-meta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.checkout__item-qty {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: #c9a84c;
+  min-width: 1.5rem;
+}
+
+.checkout__item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: #f5f0e8;
+}
+
+.checkout__item-price {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: #6b6560;
+  white-space: nowrap;
+}
+
+/* ── Notes textarea ── */
+.checkout__notes {
+  width: 100%;
+  box-sizing: border-box;
+  background: #161410;
+  border: 1px solid #2a2620;
+  color: #6b6560;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 0.75rem;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.checkout__notes::placeholder { color: #3a3630; }
+
+.checkout__notes:focus {
+  border-color: rgba(201, 168, 76, 0.4);
+  color: #f5f0e8;
+}
+
+/* ── Footer ── */
+.checkout__footer {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.checkout__total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.checkout__total-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #6b6560;
+}
+
+.checkout__total-amount {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 2.5rem;
+  color: #c9a84c;
+}
+
+/* ── Actions ── */
+.checkout__actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.checkout__btn {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: 1px solid #2a2620;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.25s, border-color 0.25s;
+  background: transparent;
+}
+
+/* shared wipe effect */
+.checkout__btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-101%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 0;
+}
+
+.checkout__btn span,
+.checkout__btn { color: inherit; }
+
+.checkout__btn--clear {
+  color: #f5f0e8;
+  flex: 1;
+}
+.checkout__btn--clear::before { background: #2a2620; }
+.checkout__btn--clear:hover { color: #f5f0e8; border-color: #6b6560; }
+.checkout__btn--clear:hover::before { transform: translateX(0); }
+
+.checkout__btn--place {
+  color: #0e0d0b;
+  background: #c9a84c;
+  border-color: #c9a84c;
+  flex: 2;
+  font-weight: 400;
+}
+.checkout__btn--place::before { background: #b84c2b; }
+.checkout__btn--place:hover { border-color: #b84c2b; }
+.checkout__btn--place:hover::before { transform: translateX(0); }
+.checkout__total-amount--small {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  color: #6b6560;
+}
+
+.checkout__total-row--final {
+  border-top: 1px solid #2a2620;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}

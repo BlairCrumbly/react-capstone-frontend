@@ -1,0 +1,157 @@
+.order {
+  max-width: 580px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  font-family: 'DM Mono', monospace;
+  color: #f5f0e8;
+}
+
+/* ── Header ── */
+.order__header {
+  margin-bottom: 2.5rem;
+}
+
+.order__badge {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  margin-bottom: 0.75rem;
+}
+
+.order__title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  color: #f5f0e8;
+  margin: 0 0 0.5rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.order__title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 3rem; height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #b84c2b);
+}
+
+.order__meta {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: #6b6560;
+  margin: 0.75rem 0 0;
+}
+
+/* ── Items ── */
+.order__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #2a2620;
+}
+
+.order__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid #2a2620;
+  gap: 1rem;
+}
+
+.order__item-left {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.order__item-qty {
+  font-size: 0.65rem;
+  color: #c9a84c;
+  min-width: 1.5rem;
+  padding-top: 0.15rem;
+}
+
+.order__item-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  color: #f5f0e8;
+  margin: 0 0 0.25rem;
+}
+
+.order__item-notes {
+  font-size: 0.65rem;
+  color: #6b6560;
+  margin: 0;
+  font-style: italic;
+}
+
+.order__item-price {
+  font-size: 0.8rem;
+  color: #6b6560;
+  white-space: nowrap;
+}
+
+/* ── Summary ── */
+.order__summary {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.order__summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: #6b6560;
+}
+
+.order__summary-row--total {
+  border-top: 1px solid #2a2620;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: #c9a84c;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+}
+
+/* ── Back button ── */
+.order__back {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid #2a2620;
+  color: #f5f0e8;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.order__back:hover {
+  border-color: #c9a84c;
+  color: #c9a84c;
+}
+
+/* ── Empty ── */
+.order--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  min-height: 40vh;
+}
+
+.order__empty-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: #6b6560;
+  text-transform: uppercase;
+}

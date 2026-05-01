@@ -7,4 +7,3 @@
     category?: 'ENTREE' | 'SIDE' | 'DESSERT'
     imageUrl?: string
 }
-
