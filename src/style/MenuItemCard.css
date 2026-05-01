@@ -65,3 +65,34 @@
 .card-btn:active {
   transform: scale(0.98);
 }
+
+.card-image {
+  width: calc(100% + 3.5rem);
+  margin: -2rem -1.75rem 1.25rem;
+  height: 180px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.85) saturate(0.9);
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), filter 0.3s;
+}
+
+.menu-card:hover .card-image img {
+  transform: scale(1.05);
+  filter: brightness(1) saturate(1.1);
+}
+
+/* gradient fade from image into card */
+.card-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: linear-gradient(to top, var(--card-bg, #161410), transparent);
+}

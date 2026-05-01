@@ -5,5 +5,5 @@
     description: string
     price: number
     category?: 'ENTREE' | 'SIDE' | 'DESSERT'
-    imageUrl?: string
+    imageurl?: string
 }

@@ -1,20 +1,29 @@
 import type { MenuItem } from '../types/Menu'
 import '../style/MenuItemCard.css'
+
 type MenuItemCardProps = {
   menuItem: MenuItem
   index?: number
   onAddToCart?: (item: MenuItem) => void
 }
-
 export function MenuItemCard({ menuItem, index = 0, onAddToCart }: MenuItemCardProps) {
   const handleAdd = () => {
     if (onAddToCart) onAddToCart(menuItem)
   }
 
+  // derive image URL from imageUrl field or fall back to a food image by id
+const imageSrc = menuItem.imageurl ?? null
+
+
   return (
     <article className="menu-card" style={{ animationDelay: `${index * 0.06}s` }}>
+      {imageSrc && (
+        <div className="card-image">
+          <img src={imageSrc} alt={menuItem.name} />
+        </div>
+      )}
+
       <div className="card-index">
-        
         {menuItem.category && <> · {menuItem.category}</>}
       </div>
 
