@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import type { Cart } from './types/cart'
 import type { MenuItem } from './types/Menu'
 import type { Order } from './types/order'
@@ -14,6 +14,7 @@ import './App.css'
 function App() {
   const [cart, setCart] = useState<Cart>({ items: [] })
   const [lastOrder, setLastOrder] = useState<Order | null>(null)
+  const [placedOrders, setPlacedOrders] = useState<Order[]>([])
 
   const addToCart = (menuItem: MenuItem) => {
     setCart((prev) => {
@@ -43,6 +44,7 @@ function App() {
 
   const handleOrderPlaced = (order: Order) => {
     setLastOrder(order)
+    setPlacedOrders((prev) => [order, ...prev])
     clearCart()
   }
 
@@ -62,9 +64,8 @@ function App() {
             />
           }
         />
-        <Route path="/order/:id" element={<OrderPage allOrders={lastOrder ? [lastOrder] : []} />} />
-        
-        <Route path="/orders" element={<OrdersPage />} />
+        <Route path="/order/:id" element={<OrderPage allOrders={placedOrders} />} />
+        <Route path="/orders" element={<OrdersPage placedOrders={placedOrders} />} />
         <Route path="/login" element={<LoginPage />} />
       </Routes>
     </BrowserRouter>
