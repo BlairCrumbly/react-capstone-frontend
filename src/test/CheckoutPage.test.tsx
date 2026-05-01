@@ -53,7 +53,8 @@ test('renders subtotal correctly', () => {
       />
     </MemoryRouter>
   )
-  expect(screen.getByText('$23.08')).toBeInTheDocument()
+  const allInstances = screen.getAllByText('$23.08')
+  expect(allInstances).toHaveLength(2) // item price + subtotal row
 })
 
 test('renders clear cart button', () => {
